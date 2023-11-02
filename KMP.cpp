@@ -1,6 +1,7 @@
 #include "标头.h"
 //实现kmp算法
 //没有做成任意输入
+using namespace std;
 #define Nextsize 20
 bool ju(char* m ,int msize ,char z[],int zsize) {
 	//首先建立next数组；
@@ -34,7 +35,7 @@ bool ju(char* m ,int msize ,char z[],int zsize) {
 		}
 	}
 	//开始比较
-	for (int i = 0, j = 0;i<9; j++,i++) {
+	for (int i = 0, j = 0;i<msize; j++,i++) {
 		if (m[i] != z[j]) {
 			//回溯指针i
 			if (j == 0) {
@@ -42,7 +43,7 @@ bool ju(char* m ,int msize ,char z[],int zsize) {
 			}else
 			j = next[j-1];
 		}
-		if (j == 5)return true;
+		if (j == zsize-1)return true;
 	}
 	
 	return false;
@@ -70,14 +71,38 @@ bool ju02(char* m, int msize, char z[], int zsize) {
 }
 int main() {
 	//主串
-	int msize = 9;
-	char m[] = { 'q','e','c','a','b','c','a','b','b'};
+	/*int msize = 9;*/
+	/*char m[] = { 'q','e','c','a','b','c','a','b','b'};*/
+	
 	//子串
-	int zsize = 6;
-	char z[] = { 'a','b','c','a','b','b' };
+	/*int zsize = 6;
+	char z[] = { 'a','b','c','a','b','b' };*/
 	//判断
+	int msize;
+	int zsize;
+	char m[20];
+	char z[20];
+	cout << "母串长度" << endl;
+	cin >> msize;
+	cout << "母串" << endl;
+	cin >> m;
+	cout << "子串长度" << endl;
+	cin >> zsize;
+	cout << "子串" << endl;
+	cin >> z;
+	cout << m << " " << z << endl;
      bool t=ju(m,msize, z,zsize);
 	 bool t2 = ju02(m, msize, z, zsize);
-	 int i = 0;
-	 printf("dddd");
+	 if (t) {
+		 cout << "yes"<<endl;
+	 }
+	 else {
+		 cout << "no" << endl;
+	 }
+	 if (t2) {
+		 cout << "yes" << endl;
+	 }
+	 else {
+		 cout << "no" << endl;
+	 }
 }
